@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose'
 import router from "./src/routes/auth.js"
 import userRouter from "./src/routes/user.js"
+import cors from 'cors'; 
 
 const app = express();
 app.use(express.json())
@@ -13,6 +14,7 @@ app.use(morgan('dev'));
 const port = process.env.PORT 
 const dbUrl = process.env.MONGODB_URL
 
+app.use(cors());
 
 //connect the database
 const connect = (url) => {
@@ -22,6 +24,11 @@ const connect = (url) => {
 }
 connect(dbUrl)
 
+// Root route
+app.get('/', (req, res) => {
+    res.send('Welcome to BetaHouse API');
+  });
+  
 
 //routes
 app.use("/auth", router)
