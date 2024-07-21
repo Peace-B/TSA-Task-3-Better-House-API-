@@ -3,7 +3,6 @@ import morgan from 'morgan'
 import dotenv from 'dotenv';
 import mongoose from 'mongoose'
 import router from "./src/routes/auth.js"
-import userRouter from "./src/routes/user.js"
 import cors from 'cors'; 
 
 const app = express();
@@ -31,8 +30,7 @@ app.get('/', (req, res) => {
   
 
 //routes
-app.use("/auth", router)
-app.use("/api/user", userRouter)
+app.use("/api/auth", router)
 
 
 app.listen(port, () => {
