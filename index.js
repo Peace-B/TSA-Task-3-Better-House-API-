@@ -7,6 +7,10 @@ import cors from 'cors';
 
 const app = express();
 app.use(express.json())
+let corsOptions = { 
+  origin : ['http://localhost:5173','https://better-house-task.vercel.app', 'http://localhost:5174', 'http://localhost:3000'], 
+} 
+app.use(cors(corsOptions));
 dotenv.config()
 app.use(morgan('dev'));
 
