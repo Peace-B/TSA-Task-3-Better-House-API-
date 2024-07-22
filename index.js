@@ -9,9 +9,13 @@ const app = express();
 app.use(express.json())
 let corsOptions = { 
   origin : ['http://localhost:5173','https://better-house-task.vercel.app', 'http://localhost:5174', 'http://localhost:3000'], 
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  Credentials: true,
+  optionSuccessStatus: 204
 } 
 app.use(cors(corsOptions));
-dotenv.config()
+
+dotenv.config();
 app.use(morgan('dev'));
 
 const port = process.env.PORT 
